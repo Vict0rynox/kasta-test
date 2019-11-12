@@ -1,0 +1,31 @@
+POST localhost:3000/filter
+Accept: application/json
+Cache-Control: no-cache
+
+{"topic": "test", "q": "sicp"}
+
+###
+
+GET localhost:3000/filter
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+
+GET localhost:3000/filter?id=1
+Accept: application/json
+Cache-Control: no-cache
+
+######
+
+
+DELETE localhost:3000/filter
+Accept: application/json
+Cache-Control: no-cache
+
+{"id": 1}
+
+
+
+###
