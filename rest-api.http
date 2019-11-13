@@ -5,7 +5,7 @@ Cache-Control: no-cache
 
 {
   "topic": "test",
-  "q": "sicp2"
+  "q": "sicp3"
 }
 
 ###
@@ -17,7 +17,7 @@ Cache-Control: no-cache
 ###
 
 
-GET localhost:3000/filter?id=2
+GET localhost:3000/filter?id=3
 Accept: application/json
 Cache-Control: no-cache
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 Cache-Control: no-cache
 
 {
-  "id": 1
+  "id": 4
 }
 
 

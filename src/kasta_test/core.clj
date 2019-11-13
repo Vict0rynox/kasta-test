@@ -13,15 +13,15 @@
   [val]
   (try
     (Integer/parseInt val)
-    (catch NumberFormatException e val)))
+    (catch NumberFormatException _ val)))
 
 ;;handlers
 
 (defn- create-filter [{topic :topic, filter :q}] (hash-map :id (filter/create topic filter)))
 
-(defn- select-filters [] (prn-str (filter/filters-list)))
+(defn- select-filters [] (filter/filters-list))
 
-(defn- select-filter [id] (or (filter/messages-by-id id) (list)))
+(defn- select-filter [id] (or (filter/messages-by-id (as-int id)) (list)))
 
 ;;FIXME: maybe need change params to `id`
 (defn- delete-filter [id] (hash-map :id (filter/to-delete id)))
@@ -30,7 +30,7 @@
 (def api-routes
   (routes
    (POST "/filter" {body :body} (warp-data-to-resp (create-filter body)))
-   (GET "/filter" [id :<< as-int] (warp-data-to-resp (if (nil? id) (select-filters) (select-filter id))))
+   (GET "/filter" [id] (warp-data-to-resp (if (nil? id) (select-filters) (select-filter id))))
    (DELETE "/filter" {{id :id} :body} (warp-data-to-resp (delete-filter id)))))
 
 ;;handler (booting point)

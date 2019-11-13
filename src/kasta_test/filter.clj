@@ -8,6 +8,7 @@
 
 ;;FIXME: add validator
 (def ^:private filters (agent {}))
+;;FIXME:
 (def ^:private max-id (agent 1))
 
 (defn- gen-filter-id
@@ -85,13 +86,11 @@
 
 (defn has-filter?
   "check filter exists"
-  ([filter-id] (not (nil? (@filters filter-id))))
+  ([filter-id] (some? (@filters filter-id)))
   ([topic q]
    (seq
     (filter
-     #(let
-       [filter (select-keys %1 [:filter :topic])]
-        (and (= topic (:topic filter)) (= q (:filter filter))))
+     (fn [{t :topic f :filter}] (and (= topic t) (= q f)))
      (vals @filters)))))
 
 (defn filters-list
@@ -100,8 +99,9 @@
   (or (map (fn [[id val]]
              {:id     id
               :topic  (:topic val)
-              :filter (:filter val)
-              }) @filters) (list)))
+              :filter (:filter val)})
+           @filters)
+      (list)))
 
 (defn create
   "create filter. Add filter and start consumer."
