@@ -33,7 +33,7 @@
    (GET "/filter" [id :<< as-int] (warp-data-to-resp (if (nil? id) (select-filters) (select-filter id))))
    (DELETE "/filter" {{id :id} :body} (warp-data-to-resp (delete-filter id)))))
 
-;;handler
+;;handler (booting point)
 (def rest-api
   (->
    api-routes
