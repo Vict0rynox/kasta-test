@@ -9,8 +9,9 @@ Test app for kasta
 start kafka on `localhost:9092`
 > For start kafka an zookeper can use dokcer-compose `docker-compose up`
  
-After kafka strted 
-`lein run ring server-headless`
+After kafka started  
+`lein ring server-headless`
+> For booting app use `lein-ring` plugin. Handler setup in [project.cli](./project.cli) key `:ring`.
 
 For test in IDEA can use `rest-api.http` http client file. 
 
