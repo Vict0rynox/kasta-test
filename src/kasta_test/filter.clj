@@ -9,12 +9,12 @@
 
 ;;FIXME: add validator
 (def filters (agent {}))
-(def max-id (ref 0))
+(def max-id (agent 0))
 
 (defn- gen-filter-id
   "Generate id for filter"
   []
-  (dosync (alter max-id inc)))
+  (send max-id inc))
 
 (defn- build-consumer
   "Create consumer instance to consume form the provider kafka topic name"
