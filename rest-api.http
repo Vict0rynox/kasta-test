@@ -1,8 +1,12 @@
 POST localhost:3000/filter
 Accept: application/json
+Content-Type: application/json
 Cache-Control: no-cache
 
-{"topic": "test", "q": "sicp"}
+{
+  "topic": "test",
+  "q": "sicp2"
+}
 
 ###
 
@@ -13,7 +17,7 @@ Cache-Control: no-cache
 ###
 
 
-GET localhost:3000/filter?id=1
+GET localhost:3000/filter?id=2
 Accept: application/json
 Cache-Control: no-cache
 
@@ -22,9 +26,12 @@ Cache-Control: no-cache
 
 DELETE localhost:3000/filter
 Accept: application/json
+Content-Type: application/json
 Cache-Control: no-cache
 
-{"id": 1}
+{
+  "id": 1
+}
 
 
 

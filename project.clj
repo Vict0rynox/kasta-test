@@ -13,13 +13,13 @@
                  [org.apache.kafka/kafka-clients "2.2.0"]
                  [org.apache.curator/curator-test "2.8.0"]
 
-                 ;;[me.raynes/fs "1.4.6"]
-
                  [ring/ring-core "1.7.1"]
+                 [ring/ring-json "0.5.0"]
+                 [ring/ring-defaults "0.3.2"]
                  [compojure "1.6.1"]
                  [cheshire "5.9.0"]
                  ]
-  :plugins [[lein-ring "0.12.5"]]
+  :plugins [[lein-ring "0.12.5"] [lein-kibit "0.1.7"]]
   :ring {:handler kasta-test.core/rest-api}
   ;;:main ^:skip-aot kasta-test.core
   :repl-options {:init-ns kasta-test.core})
