@@ -9,13 +9,12 @@
 ;;FIXME: add validator
 (def ^:private filters (agent {}))
 ;;FIXME:
-(def ^:private max-id (agent 1))
+(def ^:private max-id (atom 0))
 
 (defn- gen-filter-id
   "Generate id for filter"
   []
-  (send max-id inc)
-  @max-id)
+  (swap! max-id inc))
 
 (defn- build-consumer
   "Create consumer instance to consume form the provider kafka topic name"
